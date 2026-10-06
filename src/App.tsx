@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage'
 import AnalysisPage from './pages/AnalysisPage'
 import { DiaryEntry, Emotion } from './types'
 import { toLocalDateKey } from './utils/date'
-import maeumLogo from './assets/maeum-logo.jpg'
+import maeumLogo from './assets/maeum-logo.png'
 
 type Tab = 'home' | 'analysis'
 type Toast = { type: 'success' | 'error'; message: string }
@@ -99,8 +99,7 @@ export default function App() {
       <header className="app-header">
         <div className="header-inner">
           <button className="brand" onClick={() => setTab('home')} aria-label="마음 일기 홈">
-            <img className="brand-mark" src={maeumLogo} alt="" aria-hidden="true" />
-            <span>마음 일기</span>
+            <img className="brand-mark" src={maeumLogo} alt="마음 일기" />
           </button>
           <nav className="desktop-nav" aria-label="주요 메뉴">
             <button className={tab === 'home' ? 'active' : ''} onClick={() => setTab('home')}><CalendarIcon />홈</button>

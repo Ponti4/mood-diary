@@ -24,8 +24,8 @@ button:focus-visible, textarea:focus-visible, input:focus-visible { outline: 2px
 .app-shell { min-height: 100vh; }
 .app-header { height: 80px; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.96); backdrop-filter: blur(14px); position: sticky; top: 0; z-index: 20; }
 .header-inner { max-width: 1120px; height: 100%; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; }
-.brand { border: 0; background: none; display: flex; align-items: center; gap: 12px; font-size: 18px; font-weight: 600; cursor: pointer; padding: 6px; }
-.brand-mark { width: 40px; height: 40px; display: block; object-fit: cover; border-radius: 8px; }
+.brand { border: 0; background: none; display: flex; align-items: center; cursor: pointer; padding: 0; }
+.brand-mark { width: 112px; height: 56px; display: block; object-fit: contain; }
 .desktop-nav { display: flex; align-self: stretch; gap: 32px; }
 .desktop-nav button { position: relative; border: 0; background: none; padding: 0 8px; display: flex; align-items: center; gap: 8px; color: var(--muted); cursor: pointer; font-size: 16px; font-weight: 600; }
 .desktop-nav button::after { content: ''; position: absolute; left: 5px; right: 5px; bottom: 0; height: 2px; background: var(--ink); transform: scaleX(0); transition: transform .2s; }
@@ -140,8 +140,7 @@ textarea:focus { border: 2px solid var(--ink); padding: 13px 11px 31px; outline:
   body { background: #fff; }
   .app-header { height: 64px; }
   .header-inner { padding: 0 16px; }
-  .brand { font-size: 16px; }
-  .brand-mark { width: 34px; height: 34px; }
+  .brand-mark { width: 92px; height: 48px; }
   .desktop-nav { display: none; }
   .settings-button span { display: none; }
   .settings-button { width: 39px; justify-content: center; padding: 0; border: 0; }
