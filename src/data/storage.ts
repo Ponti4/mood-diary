@@ -1,7 +1,8 @@
 import { DiaryBackup, DiaryEntry, EMOTIONS } from '../types'
 import { isValidDateKey } from '../utils/date'
 
-export const STORAGE_KEY = 'maeum-diary.entries.v1'
+export const GUEST_STORAGE_KEY = 'maeum-diary.guest.entries.v1'
+export const LEGACY_STORAGE_KEY = 'maeum-diary.entries.v1'
 
 function isValidIsoDate(value: unknown): value is string {
   return typeof value === 'string' && !Number.isNaN(Date.parse(value))
@@ -30,7 +31,7 @@ function normalize(entries: DiaryEntry[]): DiaryEntry[] {
 }
 
 export function loadEntries(storage: Storage = localStorage): DiaryEntry[] {
-  const raw = storage.getItem(STORAGE_KEY)
+  const raw = storage.getItem(GUEST_STORAGE_KEY)
   if (!raw) return []
   const parsed: unknown = JSON.parse(raw)
   if (!Array.isArray(parsed) || !parsed.every(isDiaryEntry)) {
@@ -41,8 +42,12 @@ export function loadEntries(storage: Storage = localStorage): DiaryEntry[] {
 
 export function persistEntries(entries: DiaryEntry[], storage: Storage = localStorage): DiaryEntry[] {
   const normalized = normalize(entries)
-  storage.setItem(STORAGE_KEY, JSON.stringify(normalized))
+  storage.setItem(GUEST_STORAGE_KEY, JSON.stringify(normalized))
   return normalized
+}
+
+export function clearGuestEntries(storage: Storage = localStorage): void {
+  storage.removeItem(GUEST_STORAGE_KEY)
 }
 
 export function upsertEntry(

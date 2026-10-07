@@ -7,22 +7,31 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:rules": "firebase emulators:exec --only firestore \"vitest run --config vite.rules.config.ts\"",
+    "firebase:emulators": "firebase emulators:start --only firestore",
+    "deploy": "npm run build && firebase deploy --only firestore:rules,hosting"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
-    "vite": "latest",
-    "typescript": "latest",
+    "firebase": "^12.19.0",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "typescript": "latest",
+    "vite": "latest"
   },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.2",
     "@testing-library/jest-dom": "latest",
     "@testing-library/react": "latest",
     "@testing-library/user-event": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "firebase-tools": "^15.32.1",
     "jsdom": "^26.1.0",
     "vitest": "latest"
+  },
+  "overrides": {
+    "@grpc/grpc-js": "1.14.5"
   }
 }

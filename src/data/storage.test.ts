@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { createBackup, loadEntries, mergeBackup, parseBackup, persistEntries, STORAGE_KEY, upsertEntry } from './storage'
+import { createBackup, GUEST_STORAGE_KEY, LEGACY_STORAGE_KEY, loadEntries, mergeBackup, parseBackup, persistEntries, upsertEntry } from './storage'
 import { DiaryEntry } from '../types'
 
 const first: DiaryEntry = {
@@ -22,8 +22,14 @@ describe('diary storage', () => {
   })
 
   it('rejects damaged stored data', () => {
-    localStorage.setItem(STORAGE_KEY, '[{"bad":true}]')
+    localStorage.setItem(GUEST_STORAGE_KEY, '[{"bad":true}]')
     expect(() => loadEntries()).toThrow('올바르지 않습니다')
+  })
+
+  it('ignores the legacy local storage key', () => {
+    localStorage.setItem(LEGACY_STORAGE_KEY, JSON.stringify([first]))
+    expect(loadEntries()).toEqual([])
+    expect(localStorage.getItem(LEGACY_STORAGE_KEY)).not.toBeNull()
   })
 
   it('rejects invalid backup without changing current storage', () => {
@@ -39,4 +45,3 @@ describe('diary storage', () => {
     expect(result[0].emotion).toBe('angry')
   })
 })
-

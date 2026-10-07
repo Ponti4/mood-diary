@@ -31,6 +31,21 @@ button:focus-visible, textarea:focus-visible, input:focus-visible { outline: 2px
 .desktop-nav button::after { content: ''; position: absolute; left: 5px; right: 5px; bottom: 0; height: 2px; background: var(--ink); transform: scaleX(0); transition: transform .2s; }
 .desktop-nav button.active { color: var(--ink); }
 .desktop-nav button.active::after { transform: scaleX(1); }
+.header-actions { display: flex; align-items: center; gap: 10px; }
+.login-button, .account-button { height: 40px; border: 1px solid var(--line); border-radius: 9999px; background: #fff; padding: 0 15px; display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; font-weight: 600; }
+.login-button:hover, .account-button:hover { box-shadow: var(--shadow); }
+.login-button:disabled { opacity: .55; cursor: wait; }
+.google-mark { color: #4285f4; font-size: 17px; font-weight: 800; }
+.account-wrap { position: relative; }
+.account-button { padding: 3px 13px 3px 4px; }
+.account-button img, .account-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+.account-avatar { display: grid; place-items: center; background: var(--primary-soft); color: var(--primary-dark); }
+.account-name { max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.account-menu { position: absolute; top: calc(100% + 12px); right: 0; width: 240px; padding: 8px; border: 1px solid var(--line); border-radius: 14px; background: #fff; box-shadow: var(--shadow); }
+.account-menu > div { padding: 10px; display: flex; flex-direction: column; gap: 3px; border-bottom: 1px solid var(--line-soft); overflow: hidden; }
+.account-menu small { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.account-menu button { width: 100%; margin-top: 4px; border: 0; border-radius: 8px; background: transparent; padding: 11px 10px; text-align: left; cursor: pointer; }
+.account-menu button:hover { background: var(--surface); }
 .settings-wrap { position: relative; }
 .settings-button { height: 40px; border: 1px solid var(--line); border-radius: 9999px; background: white; padding: 0 15px; display: flex; align-items: center; gap: 7px; cursor: pointer; font-weight: 500; }
 .settings-button:hover { box-shadow: var(--shadow); }
@@ -43,6 +58,11 @@ button:focus-visible, textarea:focus-visible, input:focus-visible { outline: 2px
 .settings-menu > button span { display: flex; flex-direction: column; gap: 3px; }
 .settings-menu small { color: var(--muted); }
 .storage-warning { max-width: 1064px; margin: 18px auto 0; padding: 13px 16px; background: #fff4e5; border: 1px solid #f0d6aa; border-radius: 12px; color: #6d4c1e; font-size: 14px; }
+.guest-banner, .sync-banner { padding: 10px 20px; text-align: center; font-size: 13px; }
+.guest-banner { color: #164a77; background: var(--primary-soft); border-bottom: 1px solid #cde5ff; }
+.guest-banner button { border: 0; background: transparent; padding: 0 0 0 5px; color: var(--primary-dark); font-weight: 700; text-decoration: underline; cursor: pointer; }
+.sync-banner { color: var(--body); background: var(--surface); border-bottom: 1px solid var(--line-soft); }
+.content-busy { opacity: .55; pointer-events: none; }
 
 .page { max-width: 1064px; margin: 0 auto; padding: 64px 28px 80px; }
 .page-intro { margin-bottom: 32px; }
@@ -143,6 +163,11 @@ textarea:focus { border: 2px solid var(--ink); padding: 13px 11px 31px; outline:
   .brand { font-size: 16px; }
   .brand-mark { width: 34px; height: 34px; }
   .desktop-nav { display: none; }
+  .header-actions { gap: 4px; }
+  .login-button { height: 38px; padding: 0 11px; font-size: 12px; }
+  .account-button { height: 38px; padding-right: 4px; }
+  .account-name { display: none; }
+  .account-menu { position: fixed; top: 68px; right: 12px; width: calc(100vw - 24px); }
   .settings-button span { display: none; }
   .settings-button { width: 39px; justify-content: center; padding: 0; border: 0; }
   .settings-menu { position: fixed; top: 68px; right: 12px; width: calc(100vw - 24px); }
